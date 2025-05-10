@@ -19,22 +19,25 @@ public class Primes {
      * @return True iff. the integer is prime
      */
     public static boolean isPrime(int n) {
-        // Corner cases
-        if (n <= 1 || n == 4) return false;
-        if (n <= 3) return true;
+        // 处理特殊情况
+        if (n <= 1) {
+            return false;  // 0和1不是素数
+        }
+        if (n == 2) {
+            return true;   // 2是素数
+        }
+        if (n % 2 == 0) {
+            return false;  // 偶数(除2外)都不是素数
+        }
 
-        int k = 3; // Try k = 3 times
-        while (k > 0)
-        {
-            // Pick a random number in [2..n-2]
-            // Above corner cases make sure that n > 4
-            int a = 2 + (int)(Math.random() % (n - 4));
+        // 只需要检查到平方根即可
+        int sqrt = (int) Math.sqrt(n);
 
-            // Fermat's little theorem
-            if (power(a, n - 1, n) != 1)
+        // 只检查奇数因子
+        for (int i = 3; i <= sqrt; i += 2) {
+            if (n % i == 0) {
                 return false;
-
-            k--;
+            }
         }
 
         return true;
