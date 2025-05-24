@@ -6,13 +6,13 @@
 !**/pom.xml
 !.fatweleminus
 !.gitignore
-!library-sp21
 !foods.csv
 *.class
 *.log
 *.ctxt
 .mtj.tmp/
 *.jar
+!library-sp21/**/*.jar
 *.war
 *.ear
 *.zip
